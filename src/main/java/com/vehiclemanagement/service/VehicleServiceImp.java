@@ -45,7 +45,7 @@ public class VehicleServiceImp implements VehicleService {
         if ("Done".equalsIgnoreCase(vehicle.getServiceStatus())) {
             vehicleRepo.delete(vehicle);
         } else {
-            throw new RuntimeException("Cannot delete a vehicle with service status 'Done'.");
+            throw new RuntimeException("Cannot delete a vehicle without service status 'Done'.");
         }
 
 
