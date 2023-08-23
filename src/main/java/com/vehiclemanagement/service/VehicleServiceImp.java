@@ -27,8 +27,12 @@ public class VehicleServiceImp implements VehicleService {
 
     // Add a new vehicle to the repository
     @Override
-    public Vehicle addVehicle(Vehicle vehicle) {
-        return vehicleRepo.save(vehicle);
+    public Vehicle addVehicle(Vehicle vehicle){
+            List<Vehicle> vehicles = getVehicles();
+            for(Vehicle availableVehicle: vehicles){
+                if(availableVehicle.getId() == vehicle.getId()) return null;
+            }
+            return vehicleRepo.save(vehicle);
     }
 
     // Update an existing vehicle in the repository

@@ -49,6 +49,7 @@ public class VehicleController {
     public ResponseEntity<Vehicle> addVehicle(@RequestBody Vehicle vehicle) {
         try {
             Vehicle addedVehicle = vehicleService.addVehicle(vehicle);
+            if(addedVehicle == null) return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             return new ResponseEntity<>(addedVehicle, HttpStatus.CREATED);
         } catch (Exception e) {
             e.printStackTrace();
